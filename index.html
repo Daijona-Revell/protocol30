@@ -58,6 +58,7 @@
           />
           <div id="puzzleError" class="error"></div>
 
+          <!-- ⭐ FIXED: BACK BUTTON NOW USES .back-btn -->
           <button class="back-btn" onclick="goBack()">Back</button>
 
           <button class="btn" onclick="submitPuzzleAnswer()">
@@ -80,18 +81,6 @@
 
         <input id="accessKeyInput" type="text" placeholder="Enter access key" />
         <div id="errorMsg" class="error"></div>
-
-        <!-- BACK BUTTON -->
-        <button class="back-btn" onclick="backToPuzzles()">Back to Questions</button>
-
-        <!-- STAGGERED HINTS -->
-        <p id="hint1" class="access-hint" style="display:none;">
-          Hint 1: The access code is case insensitive and has no spaces.
-        </p>
-
-        <p id="hint2" class="access-hint" style="display:none;">
-          Hint 2: Take a look at the questions with the green checkmark.
-        </p>
 
         <button class="btn" onclick="validateKey()">Unlock Destination</button>
       </div>
