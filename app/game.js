@@ -87,6 +87,9 @@ let currentPuzzleIndex = 0;
 // ⭐ NEW: Stores user answers so they persist when going back
 let savedAnswers = {};
 
+// ⭐ NEW: Track incorrect attempts on access screen
+let accessAttempts = 0;
+
 // SCREEN NAVIGATION
 function goToScreen(id) {
   document
@@ -105,10 +108,12 @@ function goToScreen(id) {
       screen.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
+
+  // ⭐ Show Back button on access screen
+  if (id === "screen-lockdown") {
+    document.getElementById("accessBackBtn").style.display = "inline-block";
+  }
 }
-
-
-
 
 // LOAD PUZZLE (with restored answers)
 function loadPuzzle() {
@@ -164,7 +169,7 @@ function submitPuzzleAnswer() {
   }
 }
 
-// ⭐ NEW: BACK BUTTON
+// ⭐ BACK BUTTON
 function goBack() {
   if (currentPuzzleIndex > 0) {
     currentPuzzleIndex--;
@@ -178,7 +183,13 @@ function showHint() {
   document.getElementById("hintText").textContent = puzzle.hint;
 }
 
-// FINAL ACCESS KEY
+// ⭐ NEW: ACCESS SCREEN BACK BUTTON
+function accessGoBack() {
+  currentPuzzleIndex = puzzles.length - 1; // return to last puzzle
+  goToScreen("screen-assessment");
+}
+
+// FINAL ACCESS KEY (with progressive hints)
 function validateKey() {
   const input = document
     .getElementById("accessKeyInput")
@@ -190,6 +201,21 @@ function validateKey() {
     error.textContent = "";
     goToScreen("screen-reveal");
   } else {
+    accessAttempts++;
+
+    // Base error
     error.textContent = "ACCESS DENIED: Invalid authorization key.";
+
+    // ⭐ Hint 1 after first wrong attempt
+    if (accessAttempts === 1) {
+      document.getElementById("accessHint1").textContent =
+        "Hint: Access code is not case sensitive and does not include spaces.";
+    }
+
+    // ⭐ Hint 2 after second wrong attempt
+    if (accessAttempts === 2) {
+      document.getElementById("accessHint2").textContent =
+        "Hint: Notice the green check marks.";
+    }
   }
 }
