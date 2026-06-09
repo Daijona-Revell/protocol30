@@ -31,8 +31,7 @@ const puzzles = [
   answer: "22:00",
   hint: "Each sweep is 90 minutes apart. Track each jump carefully.",
   tag: false,
-},
-
+  },
   {
     id: 5,
     title: "Milestone Riddle",
