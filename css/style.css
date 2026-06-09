@@ -359,3 +359,9 @@ body.reveal-mode {
   min-height: 100vh;
 }
 
+#screen-reveal {
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+
