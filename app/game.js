@@ -97,7 +97,17 @@ function goToScreen(id) {
   if (id === "screen-assessment") {
     loadPuzzle();
   }
+
+  // ⭐ Only auto-scroll on the reveal page
+  if (id === "screen-reveal") {
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, 100);
+    });
+  }
 }
+
 
 // LOAD PUZZLE (with restored answers)
 function loadPuzzle() {
