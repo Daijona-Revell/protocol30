@@ -25,13 +25,14 @@ const puzzles = [
     tag: false,
   },
   {
-    id: 4,
-    title: "Temporal Drift Test",
-    text: "A timestamp loop repeats every 90 minutes. If the loop starts at 14:30, what time is the 4th loop?",
-    answer: "20:00",
-    hint: "Add 90 minutes three times.",
-    tag: false,
-  },
+  id: 4,
+  title: "Temporal Drift Test",
+  text: "A security sweep runs every 90 minutes starting at 14:30. During a lockdown, the system flags the 6th sweep as critical. At what time does the 6th sweep occur?",
+  answer: "22:00",
+  hint: "Each sweep is 90 minutes apart. Track each jump carefully.",
+  tag: false,
+}
+
   {
     id: 5,
     title: "Milestone Riddle",
