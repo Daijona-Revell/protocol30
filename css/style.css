@@ -363,3 +363,36 @@ body.reveal-mode {
   max-height: 100vh;
   overflow-y: auto;
 }
+
+/* ⭐ PATCH: Ensure Access Screen Back Button is visible */
+#accessBackBtn {
+  display: inline-block !important;
+  margin-top: 14px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: 1px solid #ff4d4d;
+  background: transparent;
+  color: #ff4d4d;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.8rem;
+  transition: 0.2s ease;
+}
+
+/* Hover glow */
+#accessBackBtn:hover {
+  background: rgba(255, 77, 77, 0.12);
+  box-shadow: 0 0 8px #ff4d4d;
+}
+
+/* ⭐ PATCH: Access Screen Hints */
+#accessHint1,
+#accessHint2 {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: #00eaff;
+  opacity: 0.85;
+  text-shadow: 0 0 6px #00eaff;
+}
+
