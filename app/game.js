@@ -1,3 +1,5 @@
+this is my game.js
+
 // HARD PUZZLES + HINTS + CHECKMARK TAGS
 const puzzles = [
   {
@@ -59,4 +61,137 @@ const puzzles = [
   {
     id: 8,
     title: "Memory Reconstruction",
-    text: "
+    text: "E N U O L K C D",
+    answer: "unlocked",
+    hint: "Rearrange the letters.",
+    tag: true,
+  },
+  {
+    id: 9,
+    title: "Identity Verification",
+    text: "Enter the sum of the digits in this system ID: 3-0-0-1-9.",
+    answer: "13",
+    hint: "Add them together.",
+    tag: false,
+  },
+  {
+    id: 10,
+    title: "Final Calibration",
+    text: "(3 × 10) + (2 × 6) + (1 × 0)",
+    answer: "42",
+    hint: "Multiply then add.",
+    tag: false,
+  },
+];
+
+let currentPuzzleIndex = 0;
+
+// ⭐ NEW: Stores user answers so they persist when going back
+let savedAnswers = {};
+
+// SCREEN NAVIGATION
+function goToScreen(id) {
+  document
+    .querySelectorAll(".screen")
+    .forEach((s) => s.classList.remove("active"));
+  const screen = document.getElementById(id);
+  screen.classList.add("active");
+
+  if (id === "screen-assessment") {
+    loadPuzzle();
+  }
+
+  // only scroll the reveal screen itself
+  if (id === "screen-reveal") {
+    requestAnimationFrame(() => {
+      screen.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+}
+
+
+
+
+// LOAD PUZZLE (with restored answers)
+function loadPuzzle() {
+  const puzzle = puzzles[currentPuzzleIndex];
+
+  document.getElementById(
+    "puzzleTitle"
+  ).textContent = `Puzzle ${puzzle.id}: ${puzzle.title}`;
+
+  document.getElementById("puzzleText").textContent = puzzle.text;
+
+  // Restore saved answer
+  document.getElementById("puzzleAnswerInput").value =
+    savedAnswers[currentPuzzleIndex] || "";
+
+  document.getElementById("puzzleError").textContent = "";
+  document.getElementById("hintText").textContent = "";
+  document.getElementById("puzzleTag").textContent = puzzle.tag ? "✔️" : "";
+
+  document.getElementById(
+    "puzzleProgress"
+  ).textContent = `Progress: ${puzzle.id} / ${puzzles.length}`;
+
+  // ⭐ Hide Back button on Puzzle 1
+  const backBtn = document.querySelector(".back-btn");
+  if (currentPuzzleIndex === 0) {
+    backBtn.style.display = "none";
+  } else {
+    backBtn.style.display = "inline-block";
+  }
+}
+
+// SUBMIT ANSWER (with saving)
+function submitPuzzleAnswer() {
+  const puzzle = puzzles[currentPuzzleIndex];
+  const input = document.getElementById("puzzleAnswerInput").value.trim();
+  const error = document.getElementById("puzzleError");
+
+  // ⭐ Save answer before checking
+  savedAnswers[currentPuzzleIndex] = input;
+
+  if (input.toLowerCase() === puzzle.answer.toLowerCase()) {
+    error.textContent = "";
+    currentPuzzleIndex++;
+
+    if (currentPuzzleIndex < puzzles.length) {
+      loadPuzzle();
+    } else {
+      goToScreen("screen-lockdown");
+    }
+  } else {
+    error.textContent = "ACCESS DENIED: Incorrect puzzle answer.";
+  }
+}
+
+// ⭐ NEW: BACK BUTTON
+function goBack() {
+  if (currentPuzzleIndex > 0) {
+    currentPuzzleIndex--;
+    loadPuzzle();
+  }
+}
+
+// HINT
+function showHint() {
+  const puzzle = puzzles[currentPuzzleIndex];
+  document.getElementById("hintText").textContent = puzzle.hint;
+}
+
+// FINAL ACCESS KEY
+function validateKey() {
+  const input = document
+    .getElementById("accessKeyInput")
+    .value.trim()
+    .toLowerCase();
+  const error = document.getElementById("errorMsg");
+
+  if (input === "level30unlocked") {
+    error.textContent = "";
+    goToScreen("screen-reveal");
+  } else {
+    error.textContent = "ACCESS DENIED: Invalid authorization key.";
+  }
+}
