@@ -352,3 +352,10 @@ body {
   transform: none !important;
 }
 
+/* Only for the final reveal screen */
+body.reveal-mode {
+  align-items: flex-start;
+  height: auto;
+  min-height: 100vh;
+}
+
