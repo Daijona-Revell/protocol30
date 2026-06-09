@@ -507,3 +507,122 @@ body.reveal-mode {
     box-shadow: 0 0 6px rgba(0,255,255,0.2);
   }
 }
+
+/* ============================================================
+   NEON THREAT-LEVEL TERMINAL — MAX UPGRADE
+   ============================================================ */
+
+/* Ambient red glow overlay */
+.threat-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255,0,0,0.18), rgba(0,0,0,0.6));
+  pointer-events: none;
+  z-index: 1;
+  animation: threatPulse 3s ease-in-out infinite;
+}
+
+@keyframes threatPulse {
+  0% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0.4; }
+}
+
+/* Threat Header */
+.threat-header {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  z-index: 2;
+  position: relative;
+}
+
+.threat-bar {
+  width: 80%;
+  height: 6px;
+  background: linear-gradient(90deg, #ff0033, #ff4d4d, #ff0033);
+  box-shadow: 0 0 12px #ff0033;
+  animation: pulseBar 1.6s ease-in-out infinite;
+}
+
+@keyframes pulseBar {
+  0% { opacity: 0.4; }
+  50% { opacity: 1; }
+  100% { opacity: 0.4; }
+}
+
+.threat-text {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #ff4d4d;
+  text-shadow: 0 0 8px #ff0033, 0 0 14px #ff0033;
+  animation: threatGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes threatGlow {
+  0% { opacity: 0.8; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1.05); }
+}
+
+/* Warning Subtext */
+.threat-subtext {
+  margin-top: 4px;
+  font-size: 0.9rem;
+  color: #ff8080;
+  opacity: 0.85;
+  text-shadow: 0 0 6px #ff0033;
+  z-index: 2;
+  position: relative;
+}
+
+/* Scanline */
+.scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 0, 0, 0.05) 0%,
+    rgba(255, 0, 0, 0.15) 50%,
+    rgba(255, 0, 0, 0.05) 100%
+  );
+  animation: scanSweep 4s linear infinite;
+  mix-blend-mode: screen;
+  z-index: 3;
+}
+
+@keyframes scanSweep {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+/* Corner brackets */
+.corner {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border: 3px solid #ff0033;
+  z-index: 4;
+  box-shadow: 0 0 10px #ff0033;
+}
+
+.corner-tl { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+.corner-tr { top: 10px; right: 10px; border-left: none; border-bottom: none; }
+.corner-bl { bottom: 10px; left: 10px; border-right: none; border-top: none; }
+.corner-br { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+
+/* Lockdown container enhancements */
+#screen-lockdown {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  box-shadow: inset 0 0 40px rgba(255, 0, 0, 0.25);
+  padding-top: 20px;
+}
+
