@@ -98,15 +98,21 @@ function goToScreen(id) {
     loadPuzzle();
   }
 
-  // ⭐ Only auto-scroll on the reveal page
+  // toggle body class for reveal layout
   if (id === "screen-reveal") {
+    document.body.classList.add("reveal-mode");
+
+    // only scroll on reveal
     requestAnimationFrame(() => {
       setTimeout(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }, 100);
     });
+  } else {
+    document.body.classList.remove("reveal-mode");
   }
 }
+
 
 
 // LOAD PUZZLE (with restored answers)
