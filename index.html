@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Operation: Unmarked Coordinates</title>
+    <link rel="stylesheet" href="CSS/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body>
+    <div class="neon-background"></div>
+
+    <div class="app">
+      <!-- WELCOME SCREEN -->
+      <div id="screen-awaken" class="screen active">
+        <h1 class="welcome-glow glitch-flicker neon-strobe">
+          LEVEL-30 PROTOCOL
+        </h1>
+
+        <p class="glitch welcome-glow">
+          SYSTEM AWAKENING SEQUENCE INITIATED...
+        </p>
+
+        <p class="welcome-story">
+          For almost three decades, this system has remained sealed — dormant,
+          encrypted, and awaiting a single activation signature.<br /><br />
+          Tonight, that signature has been detected.<br /><br />
+          A classified milestone has been reached.<br />
+          A new access tier is now available.<br /><br />
+          <strong>Your presence has triggered the Level‑30 Protocol.</strong
+          ><br /><br />
+          Before the destination can be revealed, the system must verify your
+          readiness through a series of encrypted assessments.
+        </p>
+
+        <button class="btn" onclick="goToScreen('screen-assessment')">
+          Begin Verification
+        </button>
+      </div>
+
+      <!-- PUZZLE SCREEN -->
+      <div id="screen-assessment" class="screen">
+        <h2>Assessment Module</h2>
+        <p>Cognitive calibration in progress.</p>
+
+        <div id="puzzleContainer" class="puzzle-card">
+          <div class="puzzle-title">
+            <span id="puzzleTitle"></span>
+            <span id="puzzleTag" class="tag"></span>
+          </div>
+
+          <div class="puzzle-text" id="puzzleText"></div>
+
+          <input
+            id="puzzleAnswerInput"
+            type="text"
+            placeholder="Enter your answer"
+          />
+          <div id="puzzleError" class="error"></div>
+
+          <!-- ⭐ FIXED: BACK BUTTON NOW USES .back-btn -->
+          <button class="back-btn" onclick="goBack()">Back</button>
+
+          <button class="btn" onclick="submitPuzzleAnswer()">
+            Submit Answer
+          </button>
+
+          <button class="btn hint-btn" onclick="showHint()">Hint</button>
+
+          <p id="hintText" class="hint"></p>
+
+          <div class="progress" id="puzzleProgress"></div>
+        </div>
+      </div>
+
+      <!-- LOCKDOWN SCREEN -->
+      <div id="screen-lockdown" class="screen">
+        <h2>Security Lockdown</h2>
+        <p>FINAL AUTHORIZATION REQUIRED.</p>
+        <p>Enter access key to complete Level-30 protocol.</p>
+
+        <input id="accessKeyInput" type="text" placeholder="Enter access key" />
+        <div id="errorMsg" class="error"></div>
+
+        <button class="btn" onclick="validateKey()">Unlock Destination</button>
+      </div>
+
+      <!-- REVEAL SCREEN -->
+      <div id="screen-reveal" class="screen">
+        <div class="reveal-container">
+          <div class="surge neon-strobe">ACCESS GRANTED</div>
+          <div class="data-cascade">LEVEL-30 PROTOCOL COMPLETE</div>
+
+          <div class="seal">
+            <div class="seal-text">DESTINATION<br />DECLASSIFYING...</div>
+          </div>
+
+          <div class="nashville-drop neon-strobe">NASHVILLE</div>
+        </div>
+
+        <div class="invite-modal">
+          <h2>Mission Briefing</h2>
+
+          <p>🎉 You are invited to Daijona’s 30th Birthday Celebration!!!</p>
+          <p>📍 Nashville, Tennessee</p>
+          <p>🗓️ March 31st – April 4th, 2027</p>
+
+          <p style="margin-top: 20px"><strong>MISSION DIRECTIVE:</strong></p>
+
+          <p>Reply via text to authenticate your mission status.</p>
+
+          <p class="awaiting-line">
+            Awaiting acknowledgment<span class="blink-cursor">|</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script src="APP/game.js"></script>
+  </body>
+</html>
