@@ -1,5 +1,3 @@
-this is my game.js
-
 // HARD PUZZLES + HINTS + CHECKMARK TAGS
 const puzzles = [
   {
