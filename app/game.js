@@ -102,16 +102,21 @@ function goToScreen(id) {
     loadPuzzle();
   }
 
-  // only scroll the reveal screen itself
   if (id === "screen-reveal") {
     requestAnimationFrame(() => {
       screen.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
 
-  // ⭐ Show Back button on access screen
+  // ⭐ Show Back button on access screen + restart animation
   if (id === "screen-lockdown") {
-    document.getElementById("accessBackBtn").style.display = "inline-block";
+    const btn = document.getElementById("accessBackBtn");
+    btn.style.display = "inline-block";
+
+    // restart animation
+    btn.style.animation = "none";
+    void btn.offsetWidth;
+    btn.style.animation = "accessBackIn 0.6s ease forwards 0.4s";
   }
 }
 
@@ -206,16 +211,33 @@ function validateKey() {
     // Base error
     error.textContent = "ACCESS DENIED: Invalid authorization key.";
 
+    // ⭐ Trigger error shake animation
+    error.classList.remove("shake");
+    void error.offsetWidth;
+    error.classList.add("shake");
+
     // ⭐ Hint 1 after first wrong attempt
     if (accessAttempts === 1) {
-      document.getElementById("accessHint1").textContent =
+      const h1 = document.getElementById("accessHint1");
+      h1.textContent =
         "Hint: Access code is not case sensitive and does not include spaces.";
+
+      // restart animation
+      h1.style.animation = "none";
+      void h1.offsetWidth;
+      h1.style.animation = "hintReveal 0.6s ease forwards";
     }
 
     // ⭐ Hint 2 after second wrong attempt
     if (accessAttempts === 2) {
-      document.getElementById("accessHint2").textContent =
-        "Hint: Notice the green check marks.";
+      const h2 = document.getElementById("accessHint2");
+      h2.textContent = "Hint: Notice the green check marks.";
+
+      // restart animation
+      h2.style.animation = "none";
+      void h2.offsetWidth;
+      h2.style.animation = "hintReveal 0.6s ease forwards";
     }
   }
 }
+
