@@ -92,26 +92,21 @@ function goToScreen(id) {
   document
     .querySelectorAll(".screen")
     .forEach((s) => s.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
+  const screen = document.getElementById(id);
+  screen.classList.add("active");
 
   if (id === "screen-assessment") {
     loadPuzzle();
   }
 
-  // toggle body class for reveal layout
+  // only scroll the reveal screen itself
   if (id === "screen-reveal") {
-    document.body.classList.add("reveal-mode");
-
-    // only scroll on reveal
     requestAnimationFrame(() => {
-      setTimeout(() => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }, 100);
+      screen.scrollTo({ top: 0, behavior: "smooth" });
     });
-  } else {
-    document.body.classList.remove("reveal-mode");
   }
 }
+
 
 
 
