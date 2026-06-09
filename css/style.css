@@ -396,3 +396,114 @@ body.reveal-mode {
   text-shadow: 0 0 6px #00eaff;
 }
 
+/* ============================================================
+   ACCESS SCREEN — UNIFIED CINEMATIC ANIMATION PACK
+   ============================================================ */
+
+/* ⭐ ACCESS BACK BUTTON — SLIDE IN */
+#accessBackBtn {
+  display: inline-block !important;
+  opacity: 0;
+  transform: translateX(-12px);
+  animation: accessBackIn 0.6s ease forwards 0.4s;
+  margin-top: 14px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: 1px solid #ff4d4d;
+  background: transparent;
+  color: #ff4d4d;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.8rem;
+  transition: 0.2s ease;
+}
+
+#accessBackBtn:hover {
+  background: rgba(255, 77, 77, 0.12);
+  box-shadow: 0 0 8px #ff4d4d;
+}
+
+@keyframes accessBackIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ⭐ ACCESS HINTS — FADE + GLITCH REVEAL */
+#accessHint1,
+#accessHint2 {
+  opacity: 0;
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: #00eaff;
+  text-shadow: 0 0 6px #00eaff;
+  animation: hintReveal 0.6s ease forwards;
+}
+
+@keyframes hintReveal {
+  0% {
+    opacity: 0;
+    filter: blur(3px);
+    transform: translateY(4px);
+  }
+  60% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+  75% {
+    opacity: 0.7;
+    transform: translateX(-1px);
+  }
+  90% {
+    opacity: 1;
+    transform: translateX(1px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ⭐ ACCESS ERROR — SHAKE + FLICKER */
+#errorMsg.shake {
+  animation: shakeError 0.4s ease, errorFlicker 0.8s linear;
+}
+
+@keyframes shakeError {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes errorFlicker {
+  0%, 100% { opacity: 1; }
+  30% { opacity: 0.4; }
+  60% { opacity: 0.7; }
+}
+
+/* ⭐ UNLOCK BUTTON — NEON PULSE */
+#screen-lockdown .btn {
+  animation: unlockPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes unlockPulse {
+  0% {
+    box-shadow: 0 0 6px rgba(0,255,255,0.2);
+  }
+  50% {
+    box-shadow: 0 0 14px rgba(0,255,255,0.45);
+  }
+  100% {
+    box-shadow: 0 0 6px rgba(0,255,255,0.2);
+  }
+}
