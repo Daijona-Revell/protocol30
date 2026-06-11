@@ -173,6 +173,101 @@ textarea {
   box-shadow: 0 0 8px #ff4d4d;
 }
 
+/* ========================= */
+/* INSTRUCTIONS MODAL */
+/* ========================= */
+
+.modal.hidden {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  background: #111;
+  padding: 25px;
+  border: 2px solid #ff0066;
+  color: white;
+  width: 80%;
+  max-width: 420px;
+  text-align: center;
+  box-shadow: 0 0 20px #ff0066;
+}
+
+.modal-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #ff0066;
+}
+
+.close-btn {
+  margin-top: 15px;
+  padding: 8px 20px;
+  background: #ff0066;
+  border: none;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.close-btn:hover {
+  background: #ff3385;
+}
+
+/* Info Button */
+.info-circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid #ff0066;
+  color: #ff0066;
+  background: transparent;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: 0.2s ease;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.info-circle:hover {
+  background: #ff0066;
+  color: black;
+}
+
+/* Subtle Single-Color Neon Pulse */
+@keyframes infoPulseSoft {
+  0% {
+    box-shadow: 0 0 3px #ff0066;
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    box-shadow: 0 0 6px #ff3385;
+    transform: scale(1.015);
+    opacity: 1;
+  }
+  100% {
+    box-shadow: 0 0 3px #ff0066;
+    transform: scale(1);
+    opacity: 0.85;
+  }
+}
+
+/* Apply soft single-color pulse */
+.info-circle {
+  animation: infoPulseSoft 4.2s ease-in-out infinite;
+}
+
 /* PUZZLES */
 .puzzle-card {
   margin-top: 18px;
@@ -460,18 +555,37 @@ body.reveal-mode {
 }
 
 @keyframes shakeError {
-  0% { transform: translateX(0); }
-  20% { transform: translateX(-6px); }
-  40% { transform: translateX(6px); }
-  60% { transform: translateX(-4px); }
-  80% { transform: translateX(4px); }
-  100% { transform: translateX(0); }
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-6px);
+  }
+  40% {
+    transform: translateX(6px);
+  }
+  60% {
+    transform: translateX(-4px);
+  }
+  80% {
+    transform: translateX(4px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 @keyframes errorFlicker {
-  0%, 100% { opacity: 1; }
-  30% { opacity: 0.4; }
-  60% { opacity: 0.7; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0.4;
+  }
+  60% {
+    opacity: 0.7;
+  }
 }
 
 /* ⭐ UNLOCK BUTTON — NEON PULSE */
@@ -481,13 +595,13 @@ body.reveal-mode {
 
 @keyframes unlockPulse {
   0% {
-    box-shadow: 0 0 6px rgba(0,255,255,0.2);
+    box-shadow: 0 0 6px rgba(0, 255, 255, 0.2);
   }
   50% {
-    box-shadow: 0 0 14px rgba(0,255,255,0.45);
+    box-shadow: 0 0 14px rgba(0, 255, 255, 0.45);
   }
   100% {
-    box-shadow: 0 0 6px rgba(0,255,255,0.2);
+    box-shadow: 0 0 6px rgba(0, 255, 255, 0.2);
   }
 }
 
@@ -499,16 +613,26 @@ body.reveal-mode {
 .threat-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, rgba(255,0,0,0.18), rgba(0,0,0,0.6));
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 0, 0, 0.18),
+    rgba(0, 0, 0, 0.6)
+  );
   pointer-events: none;
   z-index: 1;
   animation: threatPulse 3s ease-in-out infinite;
 }
 
 @keyframes threatPulse {
-  0% { opacity: 0.4; }
-  50% { opacity: 0.8; }
-  100% { opacity: 0.4; }
+  0% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.4;
+  }
 }
 
 /* Threat Header */
@@ -532,9 +656,15 @@ body.reveal-mode {
 }
 
 @keyframes pulseBar {
-  0% { opacity: 0.4; }
-  50% { opacity: 1; }
-  100% { opacity: 0.4; }
+  0% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.4;
+  }
 }
 
 .threat-text {
@@ -546,8 +676,14 @@ body.reveal-mode {
 }
 
 @keyframes threatGlow {
-  0% { opacity: 0.8; transform: scale(1); }
-  100% { opacity: 1; transform: scale(1.05); }
+  0% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
 }
 
 /* Warning Subtext */
@@ -581,8 +717,12 @@ body.reveal-mode {
 }
 
 @keyframes scanSweep {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100%); }
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
 }
 
 /* Corner brackets */
@@ -595,10 +735,30 @@ body.reveal-mode {
   box-shadow: 0 0 10px #ff0033;
 }
 
-.corner-tl { top: 10px; left: 10px; border-right: none; border-bottom: none; }
-.corner-tr { top: 10px; right: 10px; border-left: none; border-bottom: none; }
-.corner-bl { bottom: 10px; left: 10px; border-right: none; border-top: none; }
-.corner-br { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+.corner-tl {
+  top: 10px;
+  left: 10px;
+  border-right: none;
+  border-bottom: none;
+}
+.corner-tr {
+  top: 10px;
+  right: 10px;
+  border-left: none;
+  border-bottom: none;
+}
+.corner-bl {
+  bottom: 10px;
+  left: 10px;
+  border-right: none;
+  border-top: none;
+}
+.corner-br {
+  bottom: 10px;
+  right: 10px;
+  border-left: none;
+  border-top: none;
+}
 
 /* Lockdown container enhancements */
 #screen-lockdown {
@@ -609,3 +769,85 @@ body.reveal-mode {
   padding-top: 20px;
 }
 
+.glitch {
+  position: relative;
+  display: inline-block;
+  animation: glitch-skew 3s infinite linear alternate-reverse;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  clip-path: inset(0 0 0 0);
+}
+
+.glitch::before {
+  left: 2px;
+  text-shadow: -2px 0 #ff0066;
+  animation: glitch-anim 2.5s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  left: -2px;
+  text-shadow: -2px 0 #00eaff;
+  animation: glitch-anim2 2s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+  0% {
+    clip-path: inset(0 0 85% 0);
+  }
+  20% {
+    clip-path: inset(10% 0 40% 0);
+  }
+  40% {
+    clip-path: inset(50% 0 20% 0);
+  }
+  60% {
+    clip-path: inset(80% 0 5% 0);
+  }
+  80% {
+    clip-path: inset(30% 0 60% 0);
+  }
+  100% {
+    clip-path: inset(0 0 85% 0);
+  }
+}
+
+@keyframes glitch-anim2 {
+  0% {
+    clip-path: inset(80% 0 5% 0);
+  }
+  20% {
+    clip-path: inset(30% 0 60% 0);
+  }
+  40% {
+    clip-path: inset(0 0 85% 0);
+  }
+  60% {
+    clip-path: inset(10% 0 40% 0);
+  }
+  80% {
+    clip-path: inset(50% 0 20% 0);
+  }
+  100% {
+    clip-path: inset(80% 0 5% 0);
+  }
+}
+
+@keyframes glitch-skew {
+  0% {
+    transform: skew(0deg);
+  }
+  50% {
+    transform: skew(2deg);
+  }
+  100% {
+    transform: skew(-2deg);
+  }
+}

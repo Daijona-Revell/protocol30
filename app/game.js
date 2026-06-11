@@ -25,12 +25,12 @@ const puzzles = [
     tag: false,
   },
   {
-  id: 4,
-  title: "Temporal Drift Test",
-  text: "A security sweep runs every 90 minutes starting at 14:30. During a lockdown, the system flags the 6th sweep as critical. At what time does the 6th sweep occur?",
-  answer: "22:00",
-  hint: "Each sweep is 90 minutes apart. Track each jump carefully.",
-  tag: false,
+    id: 4,
+    title: "Temporal Drift Test",
+    text: "A security sweep runs every 90 minutes starting at 14:30. During a lockdown, the system flags the 6th sweep as critical. At what time does the 6th sweep occur? (Format xx:xx)",
+    answer: "22:00",
+    hint: "Each sweep is 90 minutes apart. Track each jump carefully.",
+    tag: false,
   },
   {
     id: 5,
@@ -90,6 +90,25 @@ let savedAnswers = {};
 // ⭐ NEW: Track incorrect attempts on access screen
 let accessAttempts = 0;
 
+// ===============================
+// INSTRUCTIONS MODAL LOGIC
+// ===============================
+const infoBtn = document.getElementById("infoBtn");
+const instructionsModal = document.getElementById("instructionsModal");
+const closeInstructions = document.getElementById("closeInstructions");
+
+if (infoBtn) {
+  infoBtn.onclick = () => {
+    instructionsModal.classList.remove("hidden");
+  };
+}
+
+if (closeInstructions) {
+  closeInstructions.onclick = () => {
+    instructionsModal.classList.add("hidden");
+  };
+}
+
 // SCREEN NAVIGATION
 function goToScreen(id) {
   document
@@ -97,6 +116,14 @@ function goToScreen(id) {
     .forEach((s) => s.classList.remove("active"));
   const screen = document.getElementById(id);
   screen.classList.add("active");
+
+  // ⭐ Hide info button on Welcome + Reveal
+  const infoBtn = document.getElementById("infoBtn");
+  if (id === "screen-awaken" || id === "screen-reveal") {
+    if (infoBtn) infoBtn.style.display = "none";
+  } else {
+    if (infoBtn) infoBtn.style.display = "inline-block";
+  }
 
   if (id === "screen-assessment") {
     loadPuzzle();
@@ -240,4 +267,3 @@ function validateKey() {
     }
   }
 }
-

@@ -31,6 +31,15 @@
           ><br /><br />
           Before the destination can be revealed, the system must verify your
           readiness through a series of encrypted assessments.
+          <br /><br />
+
+          <p class="glitch" data-text="The system leaves no clues by accident and observes your every move. The green marks illuminate what the system requires.">
+          The system leaves no clues by accident and observes your every move. <br>The green marks illuminate what the system requires.
+          </p>
+          <p class="info-line">
+           To see this message again, click the information ⓘ button.
+          </p>
+
         </p>
 
         <button class="btn" onclick="goToScreen('screen-assessment')">
@@ -40,7 +49,10 @@
 
       <!-- PUZZLE SCREEN -->
       <div id="screen-assessment" class="screen">
-        <h2>Assessment Module</h2>
+        <h2 class="module-header">
+          Assessment Module
+          <button id="infoBtn" class="info-circle">i</button>
+        </h2>
         <p>Cognitive calibration in progress.</p>
 
         <div id="puzzleContainer" class="puzzle-card">
@@ -77,28 +89,28 @@
       <div id="screen-lockdown" class="screen">
         <h2>Security Lockdown</h2>
         <!-- THREAT LEVEL TERMINAL OVERLAY -->
-<div class="threat-overlay"></div>
+        <div class="threat-overlay"></div>
 
-<!-- THREAT HEADER -->
-<div class="threat-header">
-  <div class="threat-bar"></div>
-  <div class="threat-text glitch-flicker">LOCKDOWN ENGAGED</div>
-  <div class="threat-bar"></div>
-</div>
+        <!-- THREAT HEADER -->
+        <div class="threat-header">
+          <div class="threat-bar"></div>
+          <div class="threat-text glitch-flicker">LOCKDOWN ENGAGED</div>
+          <div class="threat-bar"></div>
+        </div>
 
-<!-- WARNING SUBTEXT -->
-<p class="threat-subtext glitch-flicker">
-  Unauthorized access detected. System integrity at risk.
-</p>
+        <!-- WARNING SUBTEXT -->
+        <p class="threat-subtext glitch-flicker">
+          Unauthorized access detected. System integrity at risk.
+        </p>
 
-<!-- SCANLINE -->
-<div class="scanline"></div>
+        <!-- SCANLINE -->
+        <div class="scanline"></div>
 
-<!-- CORNER BRACKETS -->
-<div class="corner corner-tl"></div>
-<div class="corner corner-tr"></div>
-<div class="corner corner-bl"></div>
-<div class="corner corner-br"></div>
+        <!-- CORNER BRACKETS -->
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
 
         <p>FINAL AUTHORIZATION REQUIRED.</p>
         <p>Enter access key to complete Level-30 protocol.</p>
@@ -109,8 +121,14 @@
         <!-- ⭐ UNLOCK FIRST -->
         <button class="btn" onclick="validateKey()">Unlock Destination</button>
 
-        <!-- ⭐ BACK SECOND -->  <!-- ⭐ NEW: BACK BUTTON TO RETURN TO PUZZLES -->
-        <button id="accessBackBtn" class="back-btn" onclick="accessGoBack()" style="display:none;">
+        <!-- ⭐ BACK SECOND -->
+        <!-- ⭐ NEW: BACK BUTTON TO RETURN TO PUZZLES -->
+        <button
+          id="accessBackBtn"
+          class="back-btn"
+          onclick="accessGoBack()"
+          style="display: none"
+        >
           Back to Puzzles
         </button>
 
@@ -118,7 +136,6 @@
         <p id="accessHint1" class="hint"></p>
         <p id="accessHint2" class="hint"></p>
       </div>
-
 
       <!-- REVEAL SCREEN -->
       <div id="screen-reveal" class="screen">
@@ -150,6 +167,31 @@
         </div>
       </div>
     </div>
+
+    <!-- ⬇️⬇️ INSERT THE MODAL RIGHT HERE ⬇️⬇️ -->
+    <div id="instructionsModal" class="modal hidden">
+      <div class="modal-content">
+        <p class="modal-title">⚠️ SYSTEM NOTICE</p>
+        <p>
+          For almost three decades, this system has remained sealed — dormant,
+          encrypted, and awaiting a single activation signature.<br /><br />
+          Tonight, that signature has been detected.<br /><br />
+          A classified milestone has been reached.<br />
+          A new access tier is now available.<br /><br />
+          <strong>Your presence has triggered the Level‑30 Protocol.</strong
+          ><br /><br />
+          Before the destination can be revealed, the system must verify your
+          readiness through a series of encrypted assessments.
+          <br /><br />
+
+          <p class="glitch" data-text="The system leaves no clues by accident and observes your every move. The green marks illuminate what the system requires.">
+          The system leaves no clues by accident and observes your every move. <br>The green marks illuminate what the system requires.
+          </p>
+        </p>
+        <button id="closeInstructions" class="close-btn">Close</button>
+      </div>
+    </div>
+    <!-- ⬆️⬆️ END OF MODAL INSERT ⬆️⬆️ -->
 
     <script src="app/game.js"></script>
   </body>
