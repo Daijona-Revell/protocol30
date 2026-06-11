@@ -111,11 +111,6 @@ if (closeInstructions) {
 
 // SCREEN NAVIGATION
 function goToScreen(id) {
-  // ⭐ Reset all special modes
-  document.body.classList.remove("reveal-mode");
-
-
-  // ⭐ Switch active screen
   document
     .querySelectorAll(".screen")
     .forEach((s) => s.classList.remove("active"));
@@ -130,30 +125,18 @@ function goToScreen(id) {
     if (infoBtn) infoBtn.style.display = "inline-block";
   }
 
-  // ⭐ Load puzzles when entering assessment
   if (id === "screen-assessment") {
     loadPuzzle();
   }
 
-  // ⭐ REVEAL SCREEN — scroll to top + enable reveal-mode
   if (id === "screen-reveal") {
-    document.body.classList.add("reveal-mode");
-
     requestAnimationFrame(() => {
-      setTimeout(() => {
-        // iPhone Safari
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-
-        // fallback for all browsers
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }, 50);
+      screen.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
 
-  // ⭐ LOCKDOWN SCREEN — centered + no scroll
+  // ⭐ Show Back button on access screen + restart animation
   if (id === "screen-lockdown") {
-    
     const btn = document.getElementById("accessBackBtn");
     btn.style.display = "inline-block";
 
@@ -164,14 +147,12 @@ function goToScreen(id) {
   }
 }
 
-
 // LOAD PUZZLE (with restored answers)
 function loadPuzzle() {
   const puzzle = puzzles[currentPuzzleIndex];
 
-  document.getElementById(
-    "puzzleTitle"
-  ).textContent = `Puzzle ${puzzle.id}: ${puzzle.title}`;
+  document.getElementById("puzzleTitle").textContent =
+    `Puzzle ${puzzle.id}: ${puzzle.title}`;
 
   document.getElementById("puzzleText").textContent = puzzle.text;
 
@@ -183,9 +164,8 @@ function loadPuzzle() {
   document.getElementById("hintText").textContent = "";
   document.getElementById("puzzleTag").textContent = puzzle.tag ? "✔️" : "";
 
-  document.getElementById(
-    "puzzleProgress"
-  ).textContent = `Progress: ${puzzle.id} / ${puzzles.length}`;
+  document.getElementById("puzzleProgress").textContent =
+    `Progress: ${puzzle.id} / ${puzzles.length}`;
 
   // ⭐ Hide Back button on Puzzle 1
   const backBtn = document.querySelector(".back-btn");
