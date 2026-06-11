@@ -111,7 +111,11 @@ if (closeInstructions) {
 
 // SCREEN NAVIGATION
 function goToScreen(id) {
+  // ⭐ Reset all special modes
   document.body.classList.remove("reveal-mode");
+  document.body.classList.remove("lockdown-mode");
+
+  // ⭐ Switch active screen
   document
     .querySelectorAll(".screen")
     .forEach((s) => s.classList.remove("active"));
@@ -126,28 +130,31 @@ function goToScreen(id) {
     if (infoBtn) infoBtn.style.display = "inline-block";
   }
 
+  // ⭐ Load puzzles when entering assessment
   if (id === "screen-assessment") {
     loadPuzzle();
   }
 
+  // ⭐ REVEAL SCREEN — scroll to top + enable reveal-mode
   if (id === "screen-reveal") {
-    // ⭐ This is the missing line
     document.body.classList.add("reveal-mode");
-  requestAnimationFrame(() => {
-    setTimeout(() => {
-      // iPhone Safari
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
 
-      // fallback for all browsers
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }, 50);
-  });
-}
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        // iPhone Safari
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
 
+        // fallback for all browsers
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, 50);
+    });
+  }
 
-  // ⭐ Show Back button on access screen + restart animation
+  // ⭐ LOCKDOWN SCREEN — centered + no scroll
   if (id === "screen-lockdown") {
+    document.body.classList.add("lockdown-mode");
+
     const btn = document.getElementById("accessBackBtn");
     btn.style.display = "inline-block";
 
@@ -157,6 +164,7 @@ function goToScreen(id) {
     btn.style.animation = "accessBackIn 0.6s ease forwards 0.4s";
   }
 }
+
 
 // LOAD PUZZLE (with restored answers)
 function loadPuzzle() {
