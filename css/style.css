@@ -853,12 +853,15 @@ body.reveal-mode {
   }
 }
 
-/* ⭐ Reveal screen scroll unlock — ONLY affects reveal */
+/* ⭐ Reveal screen scroll unlock and centers — ONLY affects reveal */
 body.reveal-mode {
   height: auto !important;
   min-height: 100vh !important;
   overflow-y: auto !important;
-  display: block !important;
-  align-items: flex-start !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  flex-direction: column !important;
 }
+
 
