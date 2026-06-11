@@ -852,18 +852,15 @@ body.reveal-mode {
   }
 }
 
-/* ⭐ LOCKDOWN MODE — CENTERED + NO SCROLL */
-body.lockdown-mode {
+/* ⭐ CENTER LOCKDOWN SCREEN (scroll allowed) */
+#screen-lockdown {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh !important;
-  overflow: hidden !important;
+  min-height: 100vh; /* allows scroll if content exceeds */
+  padding: 40px 0;   /* keeps it visually centered even with overlays */
+  box-sizing: border-box;
 }
 
-#screen-lockdown {
-  margin-top: 0 !important;
-  max-height: none !important;
-  overflow: hidden !important;
-}
 
