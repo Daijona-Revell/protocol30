@@ -455,9 +455,10 @@ body.reveal-mode {
 }
 
 #screen-reveal {
-  max-height: 100vh;
-  overflow-y: auto;
+  max-height: none;
+  overflow-y: visible;
 }
+
 
 /* ⭐ PATCH: Ensure Access Screen Back Button is visible */
 #accessBackBtn {
@@ -851,3 +852,13 @@ body.reveal-mode {
     transform: skew(-2deg);
   }
 }
+
+/* ⭐ Reveal screen scroll unlock — ONLY affects reveal */
+body.reveal-mode {
+  height: auto !important;
+  min-height: 100vh !important;
+  overflow-y: auto !important;
+  display: block !important;
+  align-items: flex-start !important;
+}
+
