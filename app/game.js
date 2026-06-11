@@ -113,7 +113,7 @@ if (closeInstructions) {
 function goToScreen(id) {
   // ⭐ Reset all special modes
   document.body.classList.remove("reveal-mode");
-  document.body.classList.remove("lockdown-mode");
+
 
   // ⭐ Switch active screen
   document
@@ -153,8 +153,7 @@ function goToScreen(id) {
 
   // ⭐ LOCKDOWN SCREEN — centered + no scroll
   if (id === "screen-lockdown") {
-    document.body.classList.add("lockdown-mode");
-
+    
     const btn = document.getElementById("accessBackBtn");
     btn.style.display = "inline-block";
 
