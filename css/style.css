@@ -862,5 +862,27 @@ body.reveal-mode {
   padding: 40px 0;   /* keeps it visually centered even with overlays */
   box-sizing: border-box;
 }
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* ⭐ Contain all lockdown floating elements */
+.lockdown-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  z-index: 10;
+}
+
+#screen-lockdown .threat-overlay,
+#screen-lockdown .scanline,
+#screen-lockdown .corner {
+  position: absolute;
+}
+
 
 
