@@ -87,55 +87,50 @@
 
       <!-- LOCKDOWN SCREEN -->
       <div id="screen-lockdown" class="screen">
-        <h2>Security Lockdown</h2>
-        <!-- THREAT LEVEL TERMINAL OVERLAY -->
-        <div class="threat-overlay"></div>
+  <div class="lockdown-wrapper">
+    <h2>Security Lockdown</h2>
 
-        <!-- THREAT HEADER -->
-        <div class="threat-header">
-          <div class="threat-bar"></div>
-          <div class="threat-text glitch-flicker">LOCKDOWN ENGAGED</div>
-          <div class="threat-bar"></div>
-        </div>
+    <div class="threat-overlay"></div>
 
-        <!-- WARNING SUBTEXT -->
-        <p class="threat-subtext glitch-flicker">
-          Unauthorized access detected. System integrity at risk.
-        </p>
+    <div class="threat-header">
+      <div class="threat-bar"></div>
+      <div class="threat-text glitch-flicker">LOCKDOWN ENGAGED</div>
+      <div class="threat-bar"></div>
+    </div>
 
-        <!-- SCANLINE -->
-        <div class="scanline"></div>
+    <p class="threat-subtext glitch-flicker">
+      Unauthorized access detected. System integrity at risk.
+    </p>
 
-        <!-- CORNER BRACKETS -->
-        <div class="corner corner-tl"></div>
-        <div class="corner corner-tr"></div>
-        <div class="corner corner-bl"></div>
-        <div class="corner corner-br"></div>
+    <div class="scanline"></div>
 
-        <p>FINAL AUTHORIZATION REQUIRED.</p>
-        <p>Enter access key to complete Level-30 protocol.</p>
+    <div class="corner corner-tl"></div>
+    <div class="corner corner-tr"></div>
+    <div class="corner corner-bl"></div>
+    <div class="corner corner-br"></div>
 
-        <input id="accessKeyInput" type="text" placeholder="Enter access key" />
-        <div id="errorMsg" class="error"></div>
+    <p>FINAL AUTHORIZATION REQUIRED.</p>
+    <p>Enter access key to complete Level-30 protocol.</p>
 
-        <!-- ⭐ UNLOCK FIRST -->
-        <button class="btn" onclick="validateKey()">Unlock Destination</button>
+    <input id="accessKeyInput" type="text" placeholder="Enter access key" />
+    <div id="errorMsg" class="error"></div>
 
-        <!-- ⭐ BACK SECOND -->
-        <!-- ⭐ NEW: BACK BUTTON TO RETURN TO PUZZLES -->
-        <button
-          id="accessBackBtn"
-          class="back-btn"
-          onclick="accessGoBack()"
-          style="display: none"
-        >
-          Back to Puzzles
-        </button>
+    <button class="btn" onclick="validateKey()">Unlock Destination</button>
 
-        <!-- ⭐ NEW: HINTS APPEAR AFTER FAILED ATTEMPTS -->
-        <p id="accessHint1" class="hint"></p>
-        <p id="accessHint2" class="hint"></p>
-      </div>
+    <button
+      id="accessBackBtn"
+      class="back-btn"
+      onclick="accessGoBack()"
+      style="display: none"
+    >
+      Back to Puzzles
+    </button>
+
+    <p id="accessHint1" class="hint"></p>
+    <p id="accessHint2" class="hint"></p>
+  </div>
+</div>
+
 
       <!-- REVEAL SCREEN -->
       <div id="screen-reveal" class="screen">
