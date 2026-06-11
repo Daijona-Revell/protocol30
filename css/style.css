@@ -851,3 +851,19 @@ body.reveal-mode {
     transform: skew(-2deg);
   }
 }
+
+/* ⭐ LOCKDOWN MODE — CENTERED + NO SCROLL */
+body.lockdown-mode {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh !important;
+  overflow: hidden !important;
+}
+
+#screen-lockdown {
+  margin-top: 0 !important;
+  max-height: none !important;
+  overflow: hidden !important;
+}
+
