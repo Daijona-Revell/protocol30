@@ -111,6 +111,7 @@ if (closeInstructions) {
 
 // SCREEN NAVIGATION
 function goToScreen(id) {
+  document.body.classList.remove("reveal-mode");
   document
     .querySelectorAll(".screen")
     .forEach((s) => s.classList.remove("active"));
@@ -130,10 +131,20 @@ function goToScreen(id) {
   }
 
   if (id === "screen-reveal") {
-    requestAnimationFrame(() => {
-      screen.scrollTo({ top: 0, behavior: "smooth" });
-    });
-  }
+    // ⭐ This is the missing line
+    document.body.classList.add("reveal-mode");
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      // iPhone Safari
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+
+      // fallback for all browsers
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 50);
+  });
+}
+
 
   // ⭐ Show Back button on access screen + restart animation
   if (id === "screen-lockdown") {
