@@ -129,11 +129,18 @@ function goToScreen(id) {
     loadPuzzle();
   }
 
-  if (id === "screen-reveal") {
+  // ⭐ REVEAL SCREEN — unlock scroll + jump to top ONLY here
+if (id === "screen-reveal") {
+    document.body.classList.add("reveal-mode");
+
     requestAnimationFrame(() => {
-      screen.scrollTo({ top: 0, behavior: "smooth" });
+        window.scrollTo({ top: 0, behavior: "instant" });
     });
-  }
+} else {
+    document.body.classList.remove("reveal-mode");
+}
+
+
 
   // ⭐ Show Back button on access screen + restart animation
   if (id === "screen-lockdown") {
